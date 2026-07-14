@@ -129,3 +129,18 @@ window.addEventListener("scroll", () => {
 function goTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+/* ---- Menu mobile (hamburger + mega bấm để mở) ---- */
+const _navToggle = document.getElementById("navToggle");
+const _navLinks = document.getElementById("navLinks");
+if (_navToggle && _navLinks) {
+  _navToggle.addEventListener("click", () => _navLinks.classList.toggle("open"));
+}
+document.querySelectorAll(".nav .has-mega > a").forEach(a => {
+  a.addEventListener("click", e => {
+    if (window.innerWidth <= 900) {
+      e.preventDefault();
+      a.parentElement.classList.toggle("open");
+    }
+  });
+});
