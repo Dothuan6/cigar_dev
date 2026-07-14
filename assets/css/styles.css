@@ -1,0 +1,283 @@
+/* =====================================================================
+   CIGAR — DESIGN SYSTEM (styles.css)
+   Tham chiếu font từ xiganghiepdu.com (SFUFutura / Futura):
+     • Body:    14px · weight 300 · line-height 1.6 · letter-spacing .5px
+     • Heading: Futura Bold · IN HOA · letter-spacing .5px
+     • Nav/Nút: 14px · Bold · IN HOA · letter-spacing .5px
+   Thay SFUFutura (bản quyền) bằng Montserrat — geometric sans gần Futura,
+   hỗ trợ đầy đủ tiếng Việt.
+   ===================================================================== */
+
+/* ---------- DESIGN TOKENS ---------- */
+:root{
+  /* Màu — vàng gold + nâu gỗ */
+  --gold:#C6A15B; --gold-bright:#D4AF37; --gold-soft:#E8D6A8;
+  --wood-900:#1A120B; --wood-800:#2A1E14; --wood-700:#3B2A1A; --wood-500:#5C4033;
+  --cream:#FAF6EF; --paper:#FFFFFF; --ink:#22190F; --muted:#8A7A66;
+  --line:#ECE3D2;
+  --shadow:0 6px 24px rgba(26,18,11,.10);
+  --shadow-sm:0 2px 10px rgba(26,18,11,.08);
+
+  /* Typography */
+  --font-base:"Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-display:"Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+  /* Font size scale (base 14px giống site nguồn) */
+  --fs-11:11px; --fs-12:12px; --fs-13:13px; --fs-14:14px; --fs-16:16px;
+  --fs-18:18px; --fs-22:22px; --fs-26:26px; --fs-32:32px; --fs-40:40px;
+
+  /* Weight */
+  --fw-light:300; --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700;
+
+  /* Line-height & letter-spacing (theo đo được) */
+  --lh-body:1.6; --lh-tight:1.2;
+  --ls-base:.5px; --ls-wide:1px; --ls-btn:.5px;
+
+  /* Bo góc & spacing */
+  --radius:6px; --radius-lg:8px;
+  --container:1200px;
+}
+
+/* ---------- BASE ---------- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-base);
+  font-size:var(--fs-14);
+  font-weight:var(--fw-light);
+  line-height:var(--lh-body);
+  letter-spacing:var(--ls-base);
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+/* Tiêu đề — Futura style: display font, đậm, IN HOA, giãn chữ */
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:var(--fw-bold);line-height:var(--lh-tight);letter-spacing:var(--ls-base)}
+h1{font-size:var(--fs-32)}
+h2{font-size:var(--fs-26)}
+h3{font-size:var(--fs-18)}
+.display{font-family:var(--font-display)}
+.serif{font-family:var(--font-display);font-weight:var(--fw-bold);letter-spacing:var(--ls-base)} /* alias tương thích markup cũ */
+.uppercase{text-transform:uppercase;letter-spacing:var(--ls-wide)}
+
+/* ---------- BUTTONS ---------- */
+.btn{
+  display:inline-block;background:var(--gold);color:var(--wood-900);
+  font-family:var(--font-display);font-weight:var(--fw-bold);font-size:var(--fs-14);
+  text-transform:uppercase;letter-spacing:var(--ls-btn);
+  padding:11px 26px;border:none;border-radius:var(--radius);cursor:pointer;transition:.2s;
+}
+.btn:hover{background:var(--gold-bright);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:var(--wood-900)}
+
+/* ---------- TOP BAR ---------- */
+.topbar{background:var(--wood-900);color:var(--gold-soft);font-size:var(--fs-13)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px}
+.topbar a:hover{color:var(--gold-bright)}
+.topbar .links{display:flex;gap:22px}
+
+/* ---------- HEADER ---------- */
+.header{background:var(--wood-800);border-bottom:2px solid var(--gold)}
+.header .wrap{display:flex;align-items:center;gap:28px;padding:18px 20px}
+.logo{display:flex;align-items:center;gap:12px;color:var(--gold)}
+.logo img{height:64px;width:auto;display:block}
+/* Khung tìm kiếm trong suốt, hòa vào header tối; nút search cố định không bị che */
+.search{flex:0 1 360px;margin-left:auto;display:flex;align-items:stretch;background:transparent;border:1px solid rgba(198,161,91,.55);border-radius:var(--radius);overflow:hidden}
+.search select{border:none;background:transparent;padding:0 10px;font-family:var(--font-base);font-size:var(--fs-13);color:var(--gold-soft);border-right:1px solid rgba(198,161,91,.4);outline:none;cursor:pointer}
+.search select option{color:#222}
+.search input{flex:1;min-width:0;border:none;background:transparent;padding:11px 12px;font-family:var(--font-base);font-size:var(--fs-14);color:#f3e9d6;outline:none}
+.search input::placeholder{color:rgba(243,233,214,.55)}
+.search button{flex:0 0 46px;background:var(--gold);border:none;color:var(--wood-900);font-size:16px;cursor:pointer}
+.search button:hover{background:var(--gold-bright)}
+.cart{color:var(--gold);display:flex;align-items:center;gap:8px;font-size:var(--fs-14);font-weight:var(--fw-medium);position:relative}
+.cart .badge{background:var(--gold);color:var(--wood-900);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:var(--fs-11);font-weight:var(--fw-bold)}
+
+/* ---------- NAV (Futura: bold, IN HOA, .5px) ---------- */
+.nav{background:var(--wood-700)}
+.nav .wrap{display:flex;align-items:center;gap:6px}
+.nav a{color:#f3e9d6;font-family:var(--font-display);font-size:var(--fs-14);font-weight:var(--fw-semibold);
+  padding:14px 18px;text-transform:uppercase;letter-spacing:var(--ls-base);position:relative}
+.nav a:hover,.nav .has-mega:hover>a{background:var(--wood-900);color:var(--gold-bright)}
+.has-mega{position:relative}
+.mega{position:absolute;top:100%;left:0;background:var(--paper);min-width:640px;
+  box-shadow:var(--shadow);border-top:2px solid var(--gold);padding:22px 26px;
+  display:none;grid-template-columns:repeat(3,1fr);gap:8px 30px;z-index:40}
+.has-mega:hover .mega{display:grid}
+.mega h4{grid-column:1/-1;font-size:var(--fs-12);letter-spacing:var(--ls-wide);color:var(--gold);margin-bottom:4px;text-transform:uppercase}
+.mega a{color:var(--ink);text-transform:none;font-weight:var(--fw-regular);letter-spacing:normal;padding:6px 0;font-size:var(--fs-14)}
+.mega a:hover{color:var(--gold);background:none}
+
+/* ---------- HERO ---------- */
+.hero{padding:22px 0 6px}
+.hero .grid{display:grid;grid-template-columns:2fr 1fr;gap:14px;align-items:stretch}
+/* Slider banner ngang — bo góc 0 */
+.slider{position:relative;border-radius:0;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:855/499;background:var(--wood-900)}
+.slider .slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;display:flex;align-items:center;padding:0 7%}
+.slider .slide.on{opacity:1}
+.slider .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slider .overlay{background:linear-gradient(120deg,#120c07 0%,#241812 55%,#3f2c1a 100%)}
+.slider .overlay2{background:linear-gradient(120deg,#0f0a06 0%,#2a1e14 50%,#5c4033 100%)}
+.slider .overlay::after,.slider .overlay2::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 40%,rgba(198,161,91,.32),transparent 55%)}
+.slider .cap{position:relative;z-index:2;color:#fff;max-width:66%}
+.slider .cap .script{font-family:"Dancing Script",cursive;font-size:clamp(20px,3.4vw,40px);color:var(--gold);display:block;line-height:1;opacity:.95}
+.slider .cap h2{font-family:var(--font-display);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:.5px;color:#fff;
+  font-size:clamp(22px,4.4vw,50px);line-height:1.05;margin:6px 0 18px;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.slider .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:42px;height:42px;border-radius:50%;border:none;
+  background:rgba(0,0,0,.32);color:var(--gold-soft);font-size:22px;cursor:pointer;display:grid;place-items:center;transition:.2s}
+.slider .arrow:hover{background:var(--gold);color:var(--wood-900)}
+.slider .prev{left:14px}.slider .next{right:14px}
+.slider .dots{position:absolute;bottom:14px;left:0;right:0;z-index:5;display:flex;gap:8px;justify-content:center}
+.slider .dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:.2s}
+.slider .dots span.on{background:var(--gold-bright);width:22px;border-radius:5px}
+.promos{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+.promo-img{display:block;border-radius:0;overflow:hidden;box-shadow:var(--shadow)}
+.promo-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.promo-img:hover img{transform:scale(1.03)}
+
+/* ---------- TRUST BADGES ---------- */
+.trust{border-top:1px solid var(--gold-soft);border-bottom:1px solid var(--gold-soft);margin-top:18px;background:var(--paper)}
+.trust .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px;padding:20px}
+.trust .item{display:flex;align-items:center;gap:14px}
+.trust .ic{width:52px;height:52px;flex:0 0 52px;border-radius:50%;background:var(--cream);border:1.5px solid var(--gold);display:grid;place-items:center}
+.trust .ic img{width:28px;height:28px;object-fit:contain}
+.trust .item b{display:block;font-size:var(--fs-14);font-weight:var(--fw-semibold);letter-spacing:normal}
+.trust .item span{font-size:var(--fs-12);color:var(--muted)}
+
+/* ---------- SECTION TITLE (Futura: IN HOA + gạch gold) ---------- */
+section{padding:40px 0}
+.sec-title{text-align:center;margin-bottom:28px}
+.sec-title h2{font-family:var(--font-display);font-size:var(--fs-26);font-weight:var(--fw-bold);
+  color:var(--wood-700);text-transform:uppercase;letter-spacing:var(--ls-wide)}
+.sec-title::after{content:"";display:block;width:70px;height:3px;background:var(--gold);margin:12px auto 0;border-radius:2px}
+
+/* ---------- CATEGORY ---------- */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;align-items:start}
+.cat{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cat .disc{height:120px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:.2s}
+.cat .disc img{height:108px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(26,18,11,.18))}
+.cat:hover .disc{transform:translateY(-4px)}
+.cat span{font-size:var(--fs-13);font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:var(--ls-base)}
+
+/* ---------- PRODUCT GRID ---------- */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* Thẻ không nền trắng — trong suốt trên nền kem, viền rất mảnh */
+.card{background:transparent;border:none;border-radius:var(--radius-lg);position:relative}
+/* Ảnh sản phẩm: nền trắng của ảnh hòa vào nền kem nhờ mix-blend multiply.
+   KHÔNG đặt transform lên .card/.thumb khi hover (sẽ tạo stacking context
+   làm hỏng blend → lộ nền trắng). Chỉ zoom ảnh, clip trong khung. */
+.card .thumb{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;background:transparent;padding:14px;overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .55s ease}
+.card:hover .thumb img{transform:scale(1.08)}
+.card .thumb.noimg::after{content:"Hình sản phẩm";color:var(--muted);font-size:var(--fs-12)}
+.card .thumb.noimg img{display:none}
+.card .score{position:absolute;top:10px;right:10px;background:var(--wood-700);color:var(--gold-bright);font-size:var(--fs-11);font-weight:var(--fw-bold);padding:4px 8px;border-radius:var(--radius)}
+.card .body{padding:14px 14px 18px}
+.card .catname{font-size:var(--fs-11);color:var(--gold);text-transform:uppercase;letter-spacing:var(--ls-base);font-weight:var(--fw-semibold)}
+.card h3{font-size:var(--fs-14);font-weight:var(--fw-semibold);letter-spacing:normal;text-transform:none;margin:5px 0 8px;min-height:42px;line-height:1.35}
+.card .price{font-family:var(--font-display);font-weight:var(--fw-bold);color:var(--wood-700);font-size:var(--fs-16)}
+.card .price s{color:var(--muted);font-weight:var(--fw-regular);font-size:var(--fs-13);margin-right:6px}
+.card .actions{display:flex;gap:8px;margin-top:12px}
+.card .actions .btn{flex:1;padding:9px;font-size:var(--fs-12);text-align:center;border-radius:0}
+.center-more{text-align:center;margin-top:30px}
+
+/* ---------- BRAND STRIP ---------- */
+.brands{background:var(--wood-800)}
+.brands .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding:26px 20px}
+.brands span{font-family:var(--font-display);font-size:var(--fs-18);font-weight:var(--fw-semibold);color:var(--gold-soft);opacity:.75;letter-spacing:var(--ls-wide);text-transform:uppercase}
+.brands span:hover{opacity:1;color:var(--gold-bright)}
+
+/* ---------- NEWS (1 tin nổi bật + danh sách 5 tin) ---------- */
+.news-2col{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.feature .cover{display:block;aspect-ratio:16/10;overflow:hidden;position:relative}
+.feature .cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.feature .cover:hover img{transform:scale(1.04)}
+.feature h3{margin:16px 0 6px;font-size:var(--fs-22);font-family:var(--font-display);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:.3px;line-height:1.25;color:var(--wood-700)}
+.feature h3 a:hover{color:var(--gold)}
+.feature .date{font-size:var(--fs-13);color:var(--muted);font-style:italic;margin-bottom:10px}
+.feature p{font-size:var(--fs-14);color:#5b4b39;line-height:1.6}
+.feature .readmore{display:inline-block;margin-top:12px;color:var(--gold);font-weight:var(--fw-semibold);text-transform:uppercase;font-size:var(--fs-12);letter-spacing:.5px}
+.feature .readmore:hover{color:var(--wood-700)}
+.news-list{display:flex;flex-direction:column;gap:20px}
+.news-list .ni{display:flex;gap:16px;align-items:center}
+.news-list .ni .th{flex:0 0 130px;width:130px;aspect-ratio:16/10;overflow:hidden}
+.news-list .ni .th img{width:100%;height:100%;object-fit:cover}
+.news-list .ni h4{font-size:var(--fs-14);font-family:var(--font-display);font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.3px;line-height:1.35;color:var(--wood-700);transition:.2s}
+.news-list .ni:hover h4{color:var(--gold)}
+.news-list .ni .date{font-size:var(--fs-12);color:var(--muted);font-style:italic;display:block;margin-top:5px}
+/* Nền cover tạm (gradient) — có thể thay bằng ảnh tin thật */
+.feature .c1{background:linear-gradient(135deg,#241812,#5c4033)}
+.news-list .t2{background:linear-gradient(135deg,#3b2a1a,#7a5a34)}
+.news-list .t3{background:linear-gradient(135deg,#2a1e14,#6b4a2a)}
+.news-list .t4{background:linear-gradient(135deg,#5c4033,#a06a3a)}
+.news-list .t5{background:linear-gradient(135deg,#241812,#8a5a2a)}
+.news-list .t6{background:linear-gradient(135deg,#3b2a1a,#6b4a2a)}
+
+/* ---------- NEWSLETTER ---------- */
+.newsletter{background:linear-gradient(120deg,var(--wood-900),var(--wood-700));color:#fff;text-align:center}
+.newsletter h2{font-family:var(--font-display);font-size:var(--fs-26);font-weight:var(--fw-bold);color:var(--gold-bright);text-transform:uppercase;letter-spacing:var(--ls-base)}
+.newsletter p{color:var(--gold-soft);margin:8px 0 20px}
+.newsletter form{display:flex;max-width:480px;margin:0 auto;gap:10px}
+.newsletter input{flex:1;padding:13px 16px;border:none;border-radius:var(--radius);font-family:var(--font-base);font-size:var(--fs-14)}
+
+/* ---------- FOOTER ---------- */
+.footer{background:var(--wood-900);color:#d8c9b2;padding:46px 0 0;font-size:var(--fs-14);font-weight:var(--fw-light)}
+.footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:34px}
+.footer h4{color:var(--gold);font-size:var(--fs-14);text-transform:uppercase;letter-spacing:var(--ls-base);margin-bottom:16px}
+.footer .logo{margin-bottom:14px}
+.footer a{color:#d8c9b2}.footer a:hover{color:var(--gold-bright)}
+.footer ul{list-style:none}.footer li{padding:5px 0}
+.footer .social{display:flex;gap:12px;margin-top:14px}
+.footer .social a{width:36px;height:36px;border:1px solid var(--gold-soft);border-radius:50%;display:grid;place-items:center}
+.footer .social a:hover{background:var(--gold);color:var(--wood-900)}
+.copyright{border-top:1px solid rgba(198,161,91,.25);margin-top:36px;padding:18px 0;text-align:center;font-size:var(--fs-12);color:var(--muted)}
+
+/* ---------- AGE GATE ---------- */
+.agegate{position:fixed;inset:0;background:rgba(20,13,7,.92);z-index:100;display:grid;place-items:center;padding:20px}
+.agegate .box{background:var(--paper);border-top:4px solid var(--gold);border-radius:10px;max-width:420px;text-align:center;padding:38px 32px}
+.agegate h3{font-family:var(--font-display);font-size:var(--fs-22);font-weight:var(--fw-bold);color:var(--wood-700);text-transform:uppercase;letter-spacing:var(--ls-base);margin-bottom:10px}
+.agegate p{font-size:var(--fs-14);color:var(--muted);margin-bottom:22px}
+.agegate .row{display:flex;gap:12px;justify-content:center}
+
+/* ---------- FLOATING BUTTONS ---------- */
+.floats{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:8px}
+.floats .flt{display:flex;align-items:center;gap:10px;width:152px;padding:9px 12px;color:#fff;border:none;
+  border-radius:6px 0 0 6px;font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:13px;line-height:1;
+  cursor:pointer;text-decoration:none;transform:translateX(108px);transition:transform .3s ease;box-shadow:-2px 2px 10px rgba(0,0,0,.18)}
+.floats .flt:hover{transform:translateX(0)}
+.floats .flt .ic{width:22px;height:22px;flex:0 0 22px;display:grid;place-items:center}
+.floats .flt .ic svg{width:20px;height:20px;fill:currentColor}
+.floats .fb{background:#3b5998}
+.floats .ig{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}
+.floats .yt{background:#cd201f}
+.floats .top{background:#7a1f1f;display:none}
+.floats .top .ic{font-size:16px;font-weight:700}
+
+/* Nút chat tròn góc dưới phải */
+.chat{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;gap:12px}
+.chat a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);font-family:var(--font-display);font-weight:700;font-size:12px;transition:transform .2s}
+.chat a:hover{transform:scale(1.08)}
+.chat .zalo{background:#0068ff}
+.chat .mess{background:#0084ff}
+.chat a svg{width:30px;height:30px;fill:#fff}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .hero .grid{grid-template-columns:1fr}.promos{grid-template-rows:none;grid-template-columns:1fr 1fr}
+  .cats{grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(2,1fr)}
+  .news-2col{grid-template-columns:1fr}.footer .cols{grid-template-columns:1fr 1fr}
+  .search select{display:none}
+}
+@media(max-width:600px){
+  .header .wrap{flex-wrap:wrap}.nav .wrap{overflow-x:auto}.nav a{white-space:nowrap;padding:12px 14px}
+  .cats{grid-template-columns:repeat(2,1fr)}.grid4{grid-template-columns:1fr 1fr}
+  .promos{grid-template-columns:1fr}
+  .newsletter form{flex-direction:column}.footer .cols{grid-template-columns:1fr}.topbar .links{display:none}
+  .floats .flt{width:40px;transform:none;padding:9px}.floats .flt .lb{display:none}
+  .chat a{width:46px;height:46px}
+}

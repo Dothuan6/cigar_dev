@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinataba's Cigar — Xì Gà Chính Hãng | Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div class="agegate" id="agegate" style="display:none">
+  <div class="box">
+    <div style="font-size:40px">🔞</div>
+    <h3>Xác nhận độ tuổi</h3>
+    <p>Sản phẩm dành cho người từ 18 tuổi trở lên. Hút thuốc lá có hại cho sức khỏe. Bạn đã đủ 18 tuổi chưa?</p>
+    <div class="row">
+      <button class="btn" onclick="document.getElementById('agegate').style.display='none'">Tôi đủ 18 tuổi</button>
+      <a class="btn btn-outline" href="https://www.google.com">Thoát</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar"><div class="wrap">
+  <span>LIÊN HỆ: <a href="tel:0989128507"><b>0989 128 507</b></a> (09:00 – 21:00)</span>
+  <div class="links">
+    <a href="#">Kiểm tra đơn hàng</a><a href="#">Tài khoản</a>
+  </div>
+</div></div>
+
+<!-- HEADER -->
+<header class="header"><div class="wrap">
+  <a href="#" class="logo">
+    <img src="assets/img/logo-vinataba.png" alt="Vinataba — Xì Gà Chính Hãng">
+  </a>
+  <div class="search">
+    <select><option>Tất cả</option><option>Xì gà điếu lớn</option><option>Xì gà mini</option><option>Xì gà hiếm</option><option>Phụ kiện</option></select>
+    <input type="text" placeholder="Tìm kiếm xì gà, thương hiệu, phụ kiện...">
+    <button>🔍</button>
+  </div>
+  <a href="#" class="cart"><span>Giỏ hàng</span> <span class="badge" id="cartCount">0</span></a>
+</div></header>
+
+<!-- NAV -->
+<nav class="nav"><div class="wrap">
+  <a href="#">Trang chủ</a>
+  <div class="has-mega"><a href="#">Cigar cao cấp ▾</a>
+    <div class="mega">
+      <h4>Thương hiệu</h4>
+      <a href="#">Cohiba</a><a href="#">Montecristo</a><a href="#">Partagas</a>
+      <a href="#">Romeo Y Julieta</a><a href="#">H.Upmann</a><a href="#">Bolivar</a>
+      <h4 style="margin-top:14px">Độ mạnh</h4>
+      <a href="#">Loại nhẹ (Mellow)</a><a href="#">Loại trung (Medium)</a><a href="#">Loại nặng (Full)</a>
+    </div>
+  </div>
+  <div class="has-mega"><a href="#">Phụ kiện ▾</a>
+    <div class="mega" style="min-width:420px;grid-template-columns:repeat(2,1fr)">
+      <h4>Phụ kiện xì gà</h4>
+      <a href="#">Gạt tàn xì gà</a><a href="#">Dao cắt / đục lỗ</a>
+      <a href="#">Bật lửa</a><a href="#">Hộp giữ ẩm (Humidor)</a>
+      <a href="#">Set phụ kiện</a><a href="#">Ống đựng / bao da</a>
+    </div>
+  </div>
+  <a href="#">Tin tức</a>
+  <a href="#">Giới thiệu</a>
+  <a href="#">Liên hệ</a>
+</div></nav>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap"><div class="grid">
+  <div class="slider" id="heroSlider">
+    <a href="#" class="slide on"><img src="assets/img/logo-ngang2.jpg" alt="Chinh phục giới quý tộc"></a>
+    <a href="#" class="slide"><img src="assets/img/hero-main.jpg" alt="Sang trọng, đẳng cấp — Cigar chính hãng"></a>
+    <button class="arrow prev" onclick="slide(-1)" aria-label="Trước">‹</button>
+    <button class="arrow next" onclick="slide(1)" aria-label="Sau">›</button>
+    <div class="dots" id="heroDots"></div>
+  </div>
+  <div class="promos">
+    <a href="#" class="promo-img"><img src="assets/img/promo-1.jpg" alt="Cigar cho người mới"></a>
+    <a href="#" class="promo-img"><img src="assets/img/promo-2.jpg" alt="Ưu đãi, khuyến mại"></a>
+  </div>
+</div></div></div>
+
+<!-- TRUST -->
+<div class="trust"><div class="wrap">
+  <div class="item"><div class="ic"><img src="assets/img/icon-payment.svg" alt=""></div><div><b>Thanh toán linh hoạt</b><span>Tiền mặt / Chuyển khoản / COD</span></div></div>
+  <div class="item"><div class="ic"><img src="assets/img/icon-shipping.png" alt=""></div><div><b>Ship hàng toàn quốc</b><span>Giao nhanh 2h nội thành</span></div></div>
+  <div class="item"><div class="ic"><img src="assets/img/icon-cigar.png" alt=""></div><div><b>Sản phẩm chính hãng</b><span>Đối tác các thương hiệu lớn</span></div></div>
+</div></div>
+
+<!-- CATEGORIES -->
+<section><div class="wrap">
+  <div class="cats">
+    <a class="cat" href="#"><div class="disc"><img src="assets/img/cat1.png" alt="Xì Gà Quà Tặng"></div><span>Xì Gà Quà Tặng</span></a>
+    <a class="cat" href="#"><div class="disc"><img src="assets/img/cat2.png" alt="Xì Gà Loại Nhỏ"></div><span>Xì Gà Loại Nhỏ</span></a>
+    <a class="cat" href="#"><div class="disc"><img src="assets/img/cat3.png" alt="Xì Gà Hiếm"></div><span>Xì Gà Hiếm</span></a>
+    <a class="cat" href="#"><div class="disc"><img src="assets/img/cat4.png" alt="Phụ Kiện Xì Gà"></div><span>Phụ Kiện Xì Gà</span></a>
+    <a class="cat" href="#"><div class="disc"><img src="assets/img/cat5.png" alt="Combo Trải Nghiệm"></div><span>Combo Trải Nghiệm</span></a>
+    <a class="cat" href="#"><div class="disc"><img src="assets/img/cat6.png" alt="Thuốc Lá"></div><span>Thuốc Lá</span></a>
+  </div>
+</div></section>
+
+<!-- PRODUCTS: CHÍNH HÃNG -->
+<section style="padding-top:10px"><div class="wrap">
+  <div class="sec-title"><h2>Các Loại Xì Gà Chính Hãng</h2></div>
+  <div class="grid4" id="grid1"></div>
+  <div class="center-more"><a href="#" class="btn btn-outline" style="color:var(--wood-700);border:none">Xem tất cả</a></div>
+</div></section>
+
+<!-- PRODUCTS: MINI -->
+<section style="padding-top:10px"><div class="wrap">
+  <div class="sec-title"><h2>Các Loại Xì Gà Mini</h2></div>
+  <div class="grid4" id="grid2"></div>
+</div></section>
+
+<!-- PRODUCTS: XÌ GÀ HIẾM -->
+<section style="padding-top:10px;background:#f3ead6"><div class="wrap">
+  <div class="sec-title"><h2>Xì Gà Hiếm</h2></div>
+  <div class="grid4" id="grid3"></div>
+  <div class="center-more"><a href="#" class="btn btn-outline" style="color:var(--wood-700);border:none">Xem tất cả</a></div>
+</div></section>
+
+<!-- PRODUCTS: PHỤ KIỆN -->
+<section style="padding-top:10px"><div class="wrap">
+  <div class="sec-title"><h2>Phụ Kiện Xì Gà</h2></div>
+  <div class="grid4" id="grid4"></div>
+  <div class="center-more"><a href="#" class="btn btn-outline" style="color:var(--wood-700);border:none">Xem tất cả</a></div>
+</div></section>
+
+<!-- NEWS -->
+<section style="background:#f3ead6"><div class="wrap">
+  <div class="sec-title"><h2>Tin Tức Mới Nhất</h2></div>
+  <div class="news-2col">
+    <!-- Tin nổi bật -->
+    <article class="feature">
+      <a href="#" class="cover c1"></a>
+      <h3><a href="#">Top 10 sản phẩm Cigar Cuba đáng thử nhất</a></h3>
+      <div class="date">Đăng ngày: 01/11/2020</div>
+      <p>Cigar Cuba nói riêng, Cigar nói chung được coi là một niềm đam mê đặc biệt của nam giới vì nó luôn để lại những dấu ấn khó quên trong từng hơi thở…</p>
+      <a href="#" class="readmore">Đọc tiếp →</a>
+    </article>
+    <!-- Danh sách tin -->
+    <div class="news-list">
+      <a href="#" class="ni"><span class="th t2"></span><div><h4>5 lưu ý lựa chọn cigar cho người mới</h4><span class="date">Đăng ngày: 25/10/2020</span></div></a>
+      <a href="#" class="ni"><span class="th t3"></span><div><h4>Khám phá giá trị hạt giống xì gà cổ Heirloom</h4><span class="date">Đăng ngày: 12/06/2026</span></div></a>
+      <a href="#" class="ni"><span class="th t4"></span><div><h4>11 dòng xì gà đặc biệt chào mừng năm mới</h4><span class="date">Đăng ngày: 09/06/2026</span></div></a>
+      <a href="#" class="ni"><span class="th t5"></span><div><h4>Ra mắt Trinidad Espiritu Miami Edition đầy sắc màu</h4><span class="date">Đăng ngày: 05/06/2026</span></div></a>
+      <a href="#" class="ni"><span class="th t6"></span><div><h4>Hướng dẫn bảo quản xì gà đúng cách tại nhà</h4><span class="date">Đăng ngày: 20/05/2026</span></div></a>
+    </div>
+  </div>
+</div></section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter"><div class="wrap">
+  <h2 class="serif">Đăng ký nhận tin</h2>
+  <p>Nhận thông tin xì gà mới ra mắt và ưu đãi độc quyền từ Vinataba's Cigar.</p>
+  <form onsubmit="alert('Cảm ơn bạn đã đăng ký!');return false">
+    <input type="email" placeholder="Email của bạn" required>
+    <button class="btn" type="submit">Đăng ký</button>
+  </form>
+</div></section>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="wrap">
+  <div class="cols">
+    <div>
+      <a href="#" class="logo"><img src="assets/img/logo-vinataba.png" alt="Vinataba's Cigar" style="height:88px"></a>
+      <p style="margin-top:6px">Vinataba's Cigar — cộng đồng những người yêu xì gà tại Việt Nam. Đối tác chính thức của các thương hiệu cigar nổi tiếng.</p>
+      <div class="social"><a href="#">f</a><a href="#">◎</a><a href="#">▶</a></div>
+    </div>
+    <div><h4>Sản phẩm</h4><ul>
+      <li><a href="#">Xì Gà Mini</a></li><li><a href="#">Xì Gà Điếu Lớn</a></li>
+      <li><a href="#">Xì Gà Hiếm</a></li><li><a href="#">Phụ Kiện Xì Gà</a></li><li><a href="#">Combo Trải Nghiệm</a></li>
+    </ul></div>
+    <div><h4>Chính sách</h4><ul>
+      <li><a href="#">Chính sách đổi trả</a></li><li><a href="#">Chính sách bảo mật</a></li>
+      <li><a href="#">Chính sách vận chuyển</a></li><li><a href="#">Hướng dẫn mua hàng</a></li><li><a href="#">Hướng dẫn thanh toán</a></li>
+    </ul></div>
+    <div><h4>Liên hệ</h4>
+      <p>📍 507 CMT8, T23, KP1, P.BR, TP.HCM<br>📞 <a href="tel:0989128507">0989 128 507</a><br>✉️ <a href="mailto:thanh507br@gmail.com">thanh507br@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Vinataba's Cigar — Demo giao diện (kết hợp UI XGND + UX Cigar House). Hút thuốc lá có hại cho sức khỏe.</div>
+</div></footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floats">
+  <a class="flt fb" href="#" target="_blank" rel="noopener">
+    <span class="ic"><svg viewBox="0 0 24 24"><path d="M15.12 5.32H17V2.14A26.11 26.11 0 0 0 14.26 2c-2.72 0-4.58 1.66-4.58 4.7v2.6H6.6v3.56h3.08V22h3.68v-9.14h3.06l.46-3.56h-3.52V7.05c0-1.03.28-1.73 1.76-1.73z"/></svg></span>
+    <span class="lb">Facebook</span>
+  </a>
+  <a class="flt ig" href="#" target="_blank" rel="noopener">
+    <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.36.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77c-.55.55-1.11.89-1.77 1.15-.64.25-1.36.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 3.86a6.14 6.14 0 1 0 0 12.28 6.14 6.14 0 0 0 0-12.28zm0 10.13a3.99 3.99 0 1 1 0-7.98 3.99 3.99 0 0 1 0 7.98zm6.41-10.37a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></span>
+    <span class="lb">Instagram</span>
+  </a>
+  <a class="flt yt" href="#" target="_blank" rel="noopener">
+    <span class="ic"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7c-.2-.9-.9-1.5-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4c-.8.2-1.5.8-1.7 1.7C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4c.8-.2 1.5-.8 1.7-1.7.4-1.5.4-4.7.4-4.7zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></span>
+    <span class="lb">Youtube</span>
+  </a>
+  <button class="flt top" id="btnTop" onclick="goTop()">
+    <span class="ic">↑</span><span class="lb">Lên đầu</span>
+  </button>
+</div>
+<div class="chat">
+  <a class="zalo" href="#" target="_blank" rel="noopener" aria-label="Zalo">Zalo</a>
+  <a class="mess" href="#" target="_blank" rel="noopener" aria-label="Messenger">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.3 2 2 6.2 2 11.8c0 2.9 1.2 5.4 3.1 7.2.2.1.3.4.3.6l.1 1.8c0 .6.6 1 1.1.7l2-.9c.2-.1.4-.1.6-.1 1 .3 2 .4 3 .4 5.7 0 10-4.2 10-9.8S17.7 2 12 2zm6 7.5l-2.9 4.6c-.5.7-1.5.9-2.2.4l-2.3-1.7c-.2-.2-.5-.2-.8 0l-3.1 2.4c-.4.3-1-.2-.7-.6l2.9-4.6c.5-.7 1.5-.9 2.2-.4l2.3 1.7c.2.2.5.2.8 0l3.1-2.4c.4-.3 1 .2.7.6z"/></svg>
+  </a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
