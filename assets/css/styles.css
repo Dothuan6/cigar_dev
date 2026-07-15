@@ -95,13 +95,17 @@ h3{font-size:var(--fs-18)}
 .search-toggle{display:none}
 .logo{display:flex;align-items:center;gap:12px;color:var(--gold)}
 .logo img{height:64px;width:auto;display:block}
-/* Khung tìm kiếm trong suốt, hòa vào header tối; nút search cố định không bị che */
-.search{flex:0 1 360px;margin-left:auto;display:flex;align-items:stretch;background:transparent;border:1px solid rgba(198,161,91,.55);border-radius:var(--radius);overflow:hidden}
-.search select{border:none;background:transparent;padding:0 10px;font-family:var(--font-base);font-size:var(--fs-13);color:var(--gold-soft);border-right:1px solid rgba(198,161,91,.4);outline:none;cursor:pointer}
-.search select option{color:#222}
-.search input{flex:1;min-width:0;border:none;background:transparent;padding:11px 12px;font-family:var(--font-base);font-size:var(--fs-14);color:#f3e9d6;outline:none}
+/* Ô tìm kiếm dạng expand: mặc định chỉ có nút; bấm → ô nhập trượt mở từ phải sang trái.
+   Container neo phải (margin-left:auto) nên khi input rộng ra, nó nở về bên trái, nút đứng yên. */
+.search{flex:0 0 auto;margin-left:auto;display:flex;align-items:stretch;background:transparent;
+  border:1px solid transparent;border-radius:var(--radius);overflow:hidden;transition:border-color .3s ease}
+.search.open{border-color:rgba(198,161,91,.55)}
+.search input{width:0;min-width:0;border:none;background:transparent;padding:11px 0;font-family:var(--font-base);
+  font-size:var(--fs-14);color:#f3e9d6;outline:none;opacity:0;
+  transition:width .35s ease,opacity .25s ease,padding .35s ease}
+.search.open input{width:300px;padding:11px 14px;opacity:1}
 .search input::placeholder{color:rgba(243,233,214,.55)}
-.search button{flex:0 0 46px;background:var(--gold);border:none;color:var(--wood-900);font-size:16px;cursor:pointer}
+.search button{flex:0 0 46px;background:var(--gold);border:none;color:var(--wood-900);font-size:15px;cursor:pointer;display:grid;place-items:center}
 .search button:hover{background:var(--gold-bright)}
 .cart{color:var(--gold);display:flex;align-items:center;gap:8px;font-size:var(--fs-14);font-weight:var(--fw-medium);position:relative}
 .cart .badge{background:var(--gold);color:var(--wood-900);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;font-size:var(--fs-11);font-weight:var(--fw-bold)}
@@ -240,6 +244,8 @@ section{padding:40px 0}
 .footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:34px}
 .footer h4{color:var(--gold);font-size:var(--fs-14);text-transform:uppercase;letter-spacing:var(--ls-base);margin-bottom:16px}
 .footer .logo{margin-bottom:14px}
+.footer .contact{line-height:2}
+.footer .contact i{color:var(--gold);width:16px;text-align:center;margin-right:8px}
 .footer a{color:#d8c9b2}.footer a:hover{color:var(--gold-bright)}
 .footer ul{list-style:none}.footer li{padding:5px 0}
 .footer .social{display:flex;gap:12px;margin-top:14px}
@@ -288,7 +294,6 @@ section{padding:40px 0}
   .grid4{grid-template-columns:repeat(2,1fr)}
   .news-2col{grid-template-columns:1fr;gap:28px}
   .footer .cols{grid-template-columns:1fr 1fr}
-  .search select{display:none}
 }
 /* ---- Mobile: header 1 DÒNG + nav hamburger ---- */
 @media(max-width:900px){
@@ -301,9 +306,11 @@ section{padding:40px 0}
   .site-header.stuck .logo img{height:40px}
   .site-header.stuck .header .wrap{padding-top:8px;padding-bottom:8px}
   .cart{margin-left:0;font-size:var(--fs-13)}
-  /* Ô tìm kiếm ẩn mặc định → chỉ mở khi bấm icon, giữ header 1 dòng */
-  .search{display:none;order:9;flex:1 1 100%;margin-left:0}
+  /* Ô tìm kiếm ẩn mặc định → chỉ mở khi bấm icon, giữ header 1 dòng.
+     Trên mobile mở full chiều rộng (không dùng kiểu expand của desktop). */
+  .search{display:none;order:9;flex:1 1 100%;margin-left:0;border-color:rgba(198,161,91,.55)}
   .search.show{display:flex}
+  .search input{width:auto;flex:1;padding:11px 14px;opacity:1}
   /* Nav: cao 0 khi đóng, mở thành danh sách dọc */
   .nav .wrap{flex-direction:column;align-items:stretch;gap:0;padding:0}
   .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;max-height:70vh;overflow-y:auto;

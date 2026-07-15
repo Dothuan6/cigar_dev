@@ -143,13 +143,39 @@ window.addEventListener("scroll", () => {
   if (_siteHeader) _siteHeader.classList.toggle("stuck", window.scrollY > 10);
 });
 
-/* ---- Nút tìm kiếm trên mobile (mở/đóng ô tìm kiếm) ---- */
+/* ---- Nút tìm kiếm trên mobile (mở/đóng ô tìm kiếm full chiều rộng) ---- */
 const _searchToggle = document.getElementById("searchToggle");
 const _searchBox = document.getElementById("searchBox");
 if (_searchToggle && _searchBox) {
   _searchToggle.addEventListener("click", () => {
     _searchBox.classList.toggle("show");
     if (_searchBox.classList.contains("show")) _searchBox.querySelector("input").focus();
+  });
+}
+
+/* ---- Desktop: bấm nút search → ô nhập trượt mở từ phải sang trái ---- */
+if (_searchBox) {
+  const _sInput = _searchBox.querySelector("input");
+  const _sBtn = _searchBox.querySelector("button");
+  _sBtn.addEventListener("click", e => {
+    if (window.innerWidth <= 900) return; // mobile dùng nút toggle riêng
+    e.preventDefault();
+    if (!_searchBox.classList.contains("open")) {
+      _searchBox.classList.add("open");
+      _sInput.focus();
+    } else if (_sInput.value.trim()) {
+      alert("Tìm kiếm: " + _sInput.value.trim());
+    } else {
+      _searchBox.classList.remove("open");
+    }
+  });
+  // Bấm ra ngoài hoặc Esc → đóng
+  document.addEventListener("click", e => {
+    if (!_searchBox.contains(e.target)) _searchBox.classList.remove("open");
+  });
+  _sInput.addEventListener("keydown", e => {
+    if (e.key === "Escape") _searchBox.classList.remove("open");
+    if (e.key === "Enter" && _sInput.value.trim()) alert("Tìm kiếm: " + _sInput.value.trim());
   });
 }
 document.querySelectorAll(".nav .has-mega > a").forEach(a => {
