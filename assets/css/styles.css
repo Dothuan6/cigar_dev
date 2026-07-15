@@ -81,9 +81,18 @@ h3{font-size:var(--fs-18)}
 .topbar a:hover{color:var(--gold-bright)}
 .topbar .links{display:flex;gap:22px}
 
+/* ---------- STICKY HEADER (header + nav) ---------- */
+.site-header{position:sticky;top:0;z-index:50;transition:box-shadow .25s}
+.site-header.stuck{box-shadow:0 6px 20px rgba(26,18,11,.28)}
+/* Thu gọn khi dính (desktop) */
+.site-header.stuck .header .wrap{padding-top:8px;padding-bottom:8px}
+.site-header.stuck .logo img{height:46px}
+
 /* ---------- HEADER ---------- */
 .header{background:var(--wood-800);border-bottom:2px solid var(--gold)}
-.header .wrap{display:flex;align-items:center;gap:28px;padding:18px 20px}
+.header .wrap{display:flex;align-items:center;gap:28px;padding:18px 20px;transition:padding .25s}
+.logo img{transition:height .25s}
+.search-toggle{display:none}
 .logo{display:flex;align-items:center;gap:12px;color:var(--gold)}
 .logo img{height:64px;width:auto;display:block}
 /* Khung tìm kiếm trong suốt, hòa vào header tối; nút search cố định không bị che */
@@ -281,16 +290,27 @@ section{padding:40px 0}
   .footer .cols{grid-template-columns:1fr 1fr}
   .search select{display:none}
 }
-/* ---- Nav mobile: hamburger ---- */
+/* ---- Mobile: header 1 DÒNG + nav hamburger ---- */
 @media(max-width:900px){
+  /* Header gọn 1 dòng: [☰] [logo] [🔍] [giỏ hàng] */
+  .header .wrap{flex-wrap:wrap;gap:10px;padding:10px 16px}
+  .nav-toggle{display:block;padding:6px 8px;font-size:22px;line-height:1}
+  .search-toggle{display:grid;place-items:center;width:38px;height:38px;margin-left:auto;cursor:pointer;
+    background:none;border:1px solid rgba(198,161,91,.5);border-radius:var(--radius);color:var(--gold);font-size:15px}
+  .logo img{height:44px}
+  .site-header.stuck .logo img{height:40px}
+  .site-header.stuck .header .wrap{padding-top:8px;padding-bottom:8px}
+  .cart{margin-left:0;font-size:var(--fs-13)}
+  /* Ô tìm kiếm ẩn mặc định → chỉ mở khi bấm icon, giữ header 1 dòng */
+  .search{display:none;order:9;flex:1 1 100%;margin-left:0}
+  .search.show{display:flex}
+  /* Nav: cao 0 khi đóng, mở thành danh sách dọc */
   .nav .wrap{flex-direction:column;align-items:stretch;gap:0;padding:0}
-  .nav-toggle{display:block;text-align:left}
-  .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;
+  .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;max-height:70vh;overflow-y:auto;
     border-top:1px solid rgba(255,255,255,.08)}
   .nav-links.open{display:flex}
   .nav-links>a,.has-mega>a{padding:13px 20px;border-top:1px solid rgba(255,255,255,.07)}
   .has-mega{position:static}
-  .has-mega>a::after{content:"";float:right;opacity:.7}
   .mega{position:static;display:none;min-width:0;width:100%;box-shadow:none;border-top:none;
     background:var(--wood-800);grid-template-columns:1fr 1fr;gap:0 20px;padding:6px 20px 14px}
   .has-mega.open .mega{display:grid}
@@ -298,12 +318,7 @@ section{padding:40px 0}
   .mega a{color:#e8dcc6;padding:7px 0}
   .mega a:hover{color:var(--gold-bright)}
 }
-/* ---- Header xếp lại ---- */
 @media(max-width:760px){
-  .header .wrap{flex-wrap:wrap;gap:12px}
-  .logo img{height:52px}
-  .search{order:3;flex:1 1 100%;margin-left:0}
-  .cart{order:2;margin-left:auto}
   .trust .item{flex:1 1 44%}
 }
 @media(max-width:600px){

@@ -136,6 +136,22 @@ const _navLinks = document.getElementById("navLinks");
 if (_navToggle && _navLinks) {
   _navToggle.addEventListener("click", () => _navLinks.classList.toggle("open"));
 }
+
+/* ---- Sticky header: đổ bóng + thu gọn khi cuộn ---- */
+const _siteHeader = document.getElementById("siteHeader");
+window.addEventListener("scroll", () => {
+  if (_siteHeader) _siteHeader.classList.toggle("stuck", window.scrollY > 10);
+});
+
+/* ---- Nút tìm kiếm trên mobile (mở/đóng ô tìm kiếm) ---- */
+const _searchToggle = document.getElementById("searchToggle");
+const _searchBox = document.getElementById("searchBox");
+if (_searchToggle && _searchBox) {
+  _searchToggle.addEventListener("click", () => {
+    _searchBox.classList.toggle("show");
+    if (_searchBox.classList.contains("show")) _searchBox.querySelector("input").focus();
+  });
+}
 document.querySelectorAll(".nav .has-mega > a").forEach(a => {
   a.addEventListener("click", e => {
     if (window.innerWidth <= 900) {
