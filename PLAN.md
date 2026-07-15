@@ -1,157 +1,148 @@
-# PLAN — Clone & Kết Hợp Website Xì Gà (XGND + Cigar House)
+# PLAN — Vinataba's Cigar (Clone & kết hợp XGND + Cigar House)
 
-> Website bán xì gà tĩnh (HTML/CSS/JS), lấy **giao diện (UI)** từ `xiganghiepdu.com`, **trải nghiệm/bố cục (UX)** từ `cigarhouse.vn`, đổi tông màu chủ đạo sang **vàng gold + nâu gỗ**, và bổ sung **hero banner** kiểu Cigar House ở đầu trang.
+> Website bán xì gà tĩnh (HTML/CSS/JS), lấy **giao diện (UI)** từ `xiganghiepdu.com`, **trải nghiệm/bố cục (UX)** từ `cigarhouse.vn`, tông màu chủ đạo **vàng gold + nâu gỗ**, có **hero banner** kiểu Cigar House ở đầu trang.
+>
+> 📐 Chi tiết token, component, breakpoint → xem **`DESIGN-SYSTEM.md`**.
+
+**Trạng thái:** Giai đoạn 0–2 ✅ hoàn thành — đã có trang chủ hoàn chỉnh, tách CSS/JS, responsive, dữ liệu + ảnh sản phẩm thật. Đang ở ngưỡng GĐ 3.
 
 ---
 
 ## 1. Mục tiêu
 
-| # | Mục tiêu | Nguồn tham chiếu |
-|---|----------|------------------|
-| 1 | Bố cục UI trang chủ (header, lưới sản phẩm, section, footer) | `xiganghiepdu.com` (XGND) |
-| 2 | Trải nghiệm UX (menu mega, hero banner + 2 banner phụ, dải trust badge, quick-view) | `cigarhouse.vn` |
-| 3 | Tông màu **vàng gold `#C6A15B` + nâu gỗ `#3B2A1A`** thay cho đỏ `#C51230` của XGND | Yêu cầu |
-| 4 | Thêm **hero banner** đầu trang (slider lớn bên trái + 2 banner promo bên phải) | Cigar House |
-| 5 | Là site **bán hàng thật** nhưng nền tảng **tĩnh** → cần luồng đặt hàng phù hợp (mục 8) | Yêu cầu |
-
-**Bàn giao ở giai đoạn này:** tài liệu plan (file này) + trang chủ demo `index.html`.
+| # | Mục tiêu | Nguồn | Trạng thái |
+|---|----------|-------|-----------|
+| 1 | Bố cục UI trang chủ (header, lưới SP, section, footer) | XGND | ✅ |
+| 2 | Trải nghiệm UX (mega menu, hero + 2 banner phụ, trust badge, quick-view) | Cigar House | ✅ |
+| 3 | Tông màu **gold `#C6A15B` + nâu gỗ `#3B2A1A`** thay đỏ `#C51230` của XGND | Yêu cầu | ✅ |
+| 4 | **Hero banner** đầu trang (slider trái + 2 promo phải) | Cigar House | ✅ |
+| 5 | Thương hiệu **Vinataba's Cigar** (logo, favicon, thông tin liên hệ thật) | Yêu cầu | ✅ |
+| 6 | Bán hàng thật trên nền tĩnh → cần luồng đặt hàng phù hợp | Yêu cầu | ⏳ mục 8 |
 
 ---
 
 ## 2. Phân tích 2 site nguồn
 
 ### 2.1 XGND — `xiganghiepdu.com` (lấy UI)
-- Nền tảng gốc: Haravan. Tông màu đỏ đô `#C51230`.
-- **Top bar:** hotline "LIÊN HỆ: 0919803825 (09:00-21:00)".
-- **Header:** logo XGND (chữ + biểu tượng lá gold) · ô tìm kiếm có dropdown danh mục · nút search đỏ.
-- **Nav:** Trang chủ · Sản phẩm (submenu) · Blog (submenu) · Giới thiệu · Liên hệ · Kiểm tra đơn hàng.
-- **Hero:** 1 banner slider lớn (ví dụ Opus X).
-- **Dải icon danh mục:** 6 mục — Xì Gà Quà Tặng · Xì Gà Loại Nhỏ · Xì Gà Hiếm · Phụ Kiện Xì Gà · Combo Trải Nghiệm · Thuốc Lá.
-- **Các section sản phẩm:** "Các Loại Xì Gà Chính Hãng", "Xì Gà Mini", "Xì Gà Hiếm", "Phụ Kiện Xì Gà" — lưới 4 cột, mỗi card có badge điểm, tên danh mục, tên SP, nút "LIÊN HỆ".
-- **Tin tức:** slider 3 card blog.
-- **Footer tối:** logo · địa chỉ/hotline/email · cột Sản phẩm · cột Chính sách · fanpage Facebook.
+- Nền tảng: Haravan. Tông đỏ đô `#C51230`. Font gốc **SFUFutura** (Futura tiếng Việt).
+- **Top bar:** "LIÊN HỆ: 0919803825 (09:00-21:00)".
+- **Header:** logo XGND · ô tìm kiếm có dropdown danh mục · nút search đỏ.
+- **Nav:** Trang chủ · Sản phẩm (submenu) · Blog · Giới thiệu · Liên hệ · Kiểm tra đơn hàng.
+- **Hero:** 1 banner slider lớn.
+- **Dải icon danh mục:** 6 mục — Quà Tặng · Loại Nhỏ · Hiếm · Phụ Kiện · Combo · Thuốc Lá.
+- **Section sản phẩm:** Chính Hãng · Mini · Hiếm · Phụ Kiện — lưới 4 cột, card có badge điểm + nút "LIÊN HỆ".
+- **Tin tức:** slider 3 card. **Footer tối:** logo · liên hệ · cột Sản phẩm/Chính sách · fanpage.
 
 ### 2.2 Cigar House — `cigarhouse.vn` (lấy UX)
-- Nền tảng gốc: WooCommerce. Tông tối + nâu/gold, sang trọng.
-- **Nav:** Trang chủ · Cigar cao cấp (mega menu: Thương hiệu / Độ mạnh / Màu wrapper / Kiểu đóng gói) · Phụ kiện cigar (mega menu) · Tin tức · Liên hệ · icon search + giỏ hàng.
-- **HERO (điểm cần bê sang):** slider lớn chiếm ~2/3 trái ("Feel the smoke — Sang trọng, đẳng cấp" + nút Khám Phá) + **2 banner promo xếp chồng** bên phải ("Cigar cho người mới", "Ưu đãi khuyến mại").
-- **Dải trust badge** ngay dưới hero: Thanh toán linh hoạt · Ship toàn quốc · Sản phẩm chính hãng.
-- **Sản phẩm HOT:** lưới có giá + "Thêm vào giỏ" + "Xem nhanh" (quick-view).
-- Mega menu phân loại theo thương hiệu/độ mạnh — trải nghiệm lọc tốt.
+- Nền tảng: WooCommerce. Tông tối nâu/gold sang trọng.
+- **HERO (điểm chính bê sang):** slider lớn ~2/3 trái + **2 banner promo xếp chồng** phải.
+- **Dải trust badge** dưới hero: Thanh toán linh hoạt · Ship toàn quốc · Chính hãng.
+- **Mega menu** phân loại theo thương hiệu / độ mạnh / wrapper / đóng gói.
+- **Sản phẩm:** hiện giá + "Thêm vào giỏ" + "Xem nhanh".
 
-### 2.3 Kết hợp
+### 2.3 Kết hợp (đã triển khai)
+
 | Thành phần | Lấy từ | Ghi chú |
 |-----------|--------|---------|
 | Khung header + search + lưới SP + footer | XGND | Giữ bố cục quen thuộc |
-| Hero banner (slider + 2 promo) + trust badge | Cigar House | **Điểm nhấn đầu trang** |
-| Mega menu phân loại thương hiệu/độ mạnh | Cigar House | Cải thiện điều hướng |
-| Quick-view + hiển thị giá + nút thêm giỏ | Cigar House | Thay nút "Liên hệ" của XGND (tùy chính sách giá) |
-| Tông màu | **Mới** | Vàng gold + nâu gỗ |
+| Hero (slider + 2 promo) + trust badge | Cigar House | Điểm nhấn đầu trang |
+| Mega menu phân loại | Cigar House | Gộp vào **1 mục "Sản phẩm"** |
+| Hiện giá + thêm giỏ + xem nhanh | Cigar House | Thay nút "Liên hệ" của XGND |
+| Tông màu gold + nâu gỗ | **Mới** | Thay đỏ đô |
+| Font Montserrat (thay SFUFutura) | **Mới** | Giữ đúng "chất Futura", đủ tiếng Việt |
 
 ---
 
-## 3. Design System (vàng gold + nâu gỗ)
+## 3. Design System
 
-**Bảng màu**
-```
---gold          #C6A15B   /* vàng gold chủ đạo (nút, tiêu đề, viền) */
---gold-bright   #D4AF37   /* điểm nhấn / hover */
---gold-soft     #E8D6A8   /* nền nhạt, đường kẻ */
---wood-900      #1A120B   /* nâu gỗ đậm nhất (footer, nav) */
---wood-800      #2A1E14   /* nền tối phụ */
---wood-700      #3B2A1A   /* nâu gỗ chủ đạo */
---wood-500      #5C4033   /* nâu trung */
---cream         #FAF6EF   /* nền trang */
---paper         #FFFFFF   /* nền card */
---ink           #22190F   /* chữ chính */
---muted         #8A7A66   /* chữ phụ */
-```
+Tóm tắt — **chi tiết đầy đủ ở `DESIGN-SYSTEM.md`**.
 
-**Typography** *(đo từ xiganghiepdu.com — font gốc SFUFutura/Futura)*
-- Font hệ thống: **Montserrat** (geometric sans gần Futura, hỗ trợ đầy đủ tiếng Việt) thay cho SFUFutura bản quyền. Fallback: Helvetica, Arial.
-- Body: 14px · weight 300 · line-height 1.6 · letter-spacing 0.5px · màu #333/ink.
-- Tiêu đề (h1 32px, h2 26px, h3 18px): **weight 700, IN HOA, letter-spacing 0.5px**.
-- Nav / Nút: 14px · weight 600–700 · IN HOA · letter-spacing 0.5px.
-- Tiêu đề section: IN HOA + đường gạch chân gold ngắn giữa (giống XGND).
-- Toàn bộ token typography & màu nằm trong `assets/css/styles.css` (`:root`).
+| Nhóm | Giá trị chính |
+|---|---|
+| Màu | gold `#C6A15B` · gold-bright `#D4AF37` · gold-soft `#E8D6A8` · wood 900/800/700/500 `#1A120B`/`#2A1E14`/`#3B2A1A`/`#5C4033` · cream `#FAF6EF` · ink `#22190F` · muted `#8A7A66` |
+| Font | **Montserrat** (thay SFUFutura bản quyền) + Dancing Script (chữ ký banner) + Font Awesome 6.5.2 |
+| Quy tắc chữ | Body 14px/300/1.6/0.5px · Tiêu đề & nav & nút: **700, IN HOA, 0.5px** |
+| Bo góc | `--radius` 6px · `--radius-lg` 8px · **banner và nút thẻ SP = 0** |
+| Container | 1200px + padding ngang 20px |
 
-**Thành phần dùng lại**
-- Nút chính: nền gold, chữ nâu đậm, bo góc nhỏ, hover sáng.
-- Card sản phẩm: nền trắng, viền mảnh, badge điểm, tên danh mục (gold), tên SP, giá/nút.
-- Section title: căn giữa + underline gold.
-- Icon danh mục: khối tròn nền kem, viền gold.
+Toàn bộ token nằm ở `:root` trong `assets/css/styles.css` — sửa token là đổi toàn site.
 
 ---
 
 ## 4. Sitemap
 
 ```
-/ (Trang chủ)                     ← demo dựng ở giai đoạn này
-/collections/all (Tất cả sản phẩm)
-/collections/:category            (Xì gà điếu lớn, mini, hiếm, phụ kiện, thuốc lá, combo)
+/ (Trang chủ)                     ← ✅ đã dựng
+/collections/all                  (Tất cả sản phẩm)
+/collections/:category            (điếu lớn, mini, hiếm, phụ kiện, thuốc lá, combo)
 /brand/:brand                     (Cohiba, Montecristo, Partagas, ...)
-/product/:slug (Chi tiết SP)
-/blog, /blog/:slug (Tin tức)
+/product/:slug                    (Chi tiết SP)
+/blog, /blog/:slug                (Tin tức)
 /gioi-thieu, /lien-he
-/gio-hang, /thanh-toan            (giỏ hàng / đặt hàng)
+/gio-hang, /thanh-toan
 /kiem-tra-don-hang
 ```
 
 ---
 
-## 5. Cấu trúc thư mục code
+## 5. Cấu trúc thư mục (thực tế)
 
 ```
 Cigar/
-├─ PLAN.md
-├─ index.html                 ← trang chủ (demo)
-├─ pages/                      ← các trang phụ (giai đoạn sau)
-│   ├─ collection.html
-│   ├─ product.html
-│   ├─ blog.html
-│   ├─ about.html
-│   ├─ contact.html
-│   └─ cart.html
+├─ index.html               ← trang chủ (hoàn chỉnh)
+├─ favicon.ico              ← favicon đa cỡ 16/32/48
+├─ PLAN.md                  ← file này
+├─ DESIGN-SYSTEM.md         ← tài liệu hệ thiết kế
 ├─ assets/
-│   ├─ css/  (styles.css — biến màu + component)
-│   ├─ js/   (main.js — slider, mega menu, cart, quick-view)
-│   ├─ img/  (banner, sản phẩm, logo, icon)
-│   └─ (các ảnh tham chiếu hiện có)
-└─ data/
-    └─ products.json           ← dữ liệu SP (giai đoạn sau, render động)
+│  ├─ css/styles.css        ← toàn bộ style + token (:root)
+│  ├─ js/main.js            ← data SP, render, slider, cart, menu, search, goTop
+│  ├─ img/                  ← logo & cat1–6 (đã tách nền), banner, icon, favicon-*
+│  └─ home_col/             ← ảnh danh mục gốc (.webp)
+└─ Logo/                    ← file nguồn (logo, banner gốc)
 ```
-> Giai đoạn demo: gộp CSS/JS trong `index.html` (1 file) cho dễ xem trước; giai đoạn sau tách ra `assets/css`, `assets/js`.
+
+**Sẽ thêm ở GĐ sau:** `pages/` (collection, product, blog, about, contact, cart) và `data/products.json`.
 
 ---
 
-## 6. Cấu trúc trang chủ (index.html)
+## 6. Cấu trúc trang chủ (đã dựng)
 
-1. **Top bar** — hotline + link nhanh (Kiểm tra đơn hàng, Tài khoản).
-2. **Header** — logo gold · ô tìm kiếm (dropdown danh mục) · icon giỏ hàng.
-3. **Nav** (nền nâu gỗ, chữ gold) — Trang chủ · Cigar cao cấp (mega) · Phụ kiện · Tin tức · Giới thiệu · Liên hệ.
-4. **HERO** — slider lớn trái + 2 banner promo phải *(bê từ Cigar House)*.
-5. **Trust badges** — 3 mục: Thanh toán linh hoạt · Ship toàn quốc · Chính hãng.
-6. **Dải icon danh mục** — 6 danh mục *(XGND)*.
-7. **Section "Xì Gà Chính Hãng"** — lưới 4 cột.
-8. **Section "Xì Gà Mini"** — lưới 4 cột.
-9. **Dải thương hiệu / khuyến mãi.**
-10. **Tin tức** — 3 card.
-11. **Đăng ký nhận tin.**
-12. **Footer** tối, điểm nhấn gold.
+1. **Top bar** — LIÊN HỆ 0989 128 507 + Kiểm tra đơn hàng · Tài khoản.
+2. **Sticky header** — hamburger (mobile) · logo Vinataba · **ô tìm kiếm expand** · giỏ hàng. Dính khi cuộn, tự thu gọn.
+3. **Nav** — Trang chủ · **Sản phẩm** (mega: Danh mục / Thương hiệu / Phụ kiện) · Tin tức · Giới thiệu · Liên hệ.
+4. **HERO** — slider 2 banner thật (Chinh phục giới quý tộc / Sang trọng đẳng cấp) + 2 promo phải.
+5. **Trust badges** — Thanh toán linh hoạt · Ship toàn quốc · Chính hãng.
+6. **Dải 6 danh mục** — ảnh sản phẩm tách nền.
+7. **Xì Gà Chính Hãng** — lưới 4 cột (8 SP thật).
+8. **Xì Gà Mini** — lưới 4 cột (8 SP thật).
+9. **Xì Gà Hiếm** — lưới 4 cột (8 SP thật).
+10. **Phụ Kiện Xì Gà** — lưới 4 cột (8 SP thật).
+11. **Tin tức** — 2 cột: 1 tin nổi bật + danh sách 5 tin.
+12. **Đăng ký nhận tin.**
+13. **Footer** tối, điểm nhấn gold, liên hệ thật.
+14. **Nút nổi** — Facebook/Instagram/YouTube (hover trượt ra), Lên đầu (hiện khi cuộn), Zalo + Messenger.
+
+> Đã bỏ so với bản đầu: dải tên thương hiệu giữa trang, mục "Combo trải nghiệm" trên nav, "Hệ thống cửa hàng" trên topbar, dropdown "Tất cả" ở ô tìm kiếm.
 
 ---
 
-## 7. Roadmap triển khai
+## 7. Roadmap
 
-| GĐ | Nội dung | Kết quả |
-|----|----------|---------|
-| **0** | Plan + design system | `PLAN.md` |
-| **1** | Trang chủ demo có banner | `index.html` (đang làm) |
-| **2** | Tách CSS/JS, dựng trang danh mục + chi tiết SP | `pages/*`, `assets/*` |
-| **3** | Dữ liệu SP `products.json` + render động + tìm kiếm/lọc | JS |
-| **4** | Giỏ hàng + luồng đặt hàng (mục 8) | cart + checkout |
-| **5** | Blog, Giới thiệu, Liên hệ, SEO, responsive QA | hoàn thiện |
-| **6** | Deploy (Netlify/Vercel/GitHub Pages) + domain | live |
+| GĐ | Nội dung | Kết quả | Trạng thái |
+|----|----------|---------|-----------|
+| **0** | Plan + design system | `PLAN.md`, `DESIGN-SYSTEM.md` | ✅ |
+| **1** | Trang chủ demo có banner | `index.html` | ✅ |
+| **2** | Tách CSS/JS · responsive · ảnh + data SP thật · logo/favicon | `assets/*` | ✅ |
+| **3** | Dựng trang danh mục + chi tiết SP · `products.json` render động · tìm kiếm/lọc thật | `pages/*`, `data/` | ⏳ tiếp theo |
+| **4** | Giỏ hàng + luồng đặt hàng (mục 8) | cart + checkout | ⏳ |
+| **5** | Blog, Giới thiệu, Liên hệ, SEO, QA | hoàn thiện | ⏳ |
+| **6** | Deploy (GitHub Pages/Netlify/Vercel) + domain | live | ⏳ repo: `github.com/Dothuan6/cigar_dev` |
+
+**Việc tồn đọng (nice-to-have):**
+- Ảnh SP đang **hotlink CDN hstatic** → cần internet. Muốn offline: tải về `assets/img/products/`.
+- Ảnh tin tức đang là gradient tạm → thay ảnh bài viết thật.
+- Bật lại modal 18+ (đang tắt bằng `display:none`).
+- Gắn link thật cho Facebook / Instagram / YouTube / Zalo / Messenger.
 
 ---
 
@@ -159,15 +150,17 @@ Cigar/
 
 Site tĩnh không có backend, nên để **bán thật** cần một trong các luồng:
 
-1. **Đặt hàng qua form + Messenger/Zalo (đơn giản nhất)** — giữ mô hình "Liên hệ" của XGND: khách bấm đặt → gửi form (Formspree/Google Form) hoặc chat. *Không cần backend.*
-2. **Giỏ hàng phía client + checkout qua dịch vụ ngoài** — cart lưu ở `localStorage`, thanh toán/đơn hàng đẩy sang Google Sheet (Apps Script) hoặc email API.
-3. **Headless commerce** — nhúng Snipcart / Ecwid / Shopify Buy Button vào site tĩnh để có giỏ hàng + thanh toán thật mà không tự dựng backend.
-4. **Chuyển nền tảng** khi cần đầy đủ (kho, đơn, khuyến mãi): WooCommerce hoặc Haravan — giữ nguyên giao diện này làm theme.
+1. **Đặt hàng qua form + Messenger/Zalo (đơn giản nhất)** — khách bấm đặt → gửi form (Formspree/Google Form) hoặc chat. *Không cần backend.*
+2. **Giỏ hàng client + checkout dịch vụ ngoài** — cart `localStorage`, đơn đẩy sang Google Sheet (Apps Script) hoặc email API.
+3. **Headless commerce** — nhúng Snipcart / Ecwid / Shopify Buy Button để có giỏ hàng + thanh toán thật.
+4. **Chuyển nền tảng** khi cần đầy đủ (kho, đơn, khuyến mãi): WooCommerce / Haravan — giữ giao diện này làm theme.
 
-> **Khuyến nghị:** GĐ demo dùng **phương án 1–2** (form + cart localStorage) để chạy được ngay; khi cần thanh toán online thật thì gắn **Snipcart/Ecwid** (phương án 3) — ít công, không phá giao diện.
+> **Khuyến nghị:** hiện cart mới đếm số lượng (demo). GĐ 4 làm **phương án 1–2** để chạy được ngay; cần thanh toán online thật thì gắn **Snipcart/Ecwid** (phương án 3) — ít công, không phá giao diện.
 
 ---
 
 ## 9. Lưu ý pháp lý
 
-Xì gà/thuốc lá là mặt hàng hạn chế: cần **cổng xác nhận đủ 18 tuổi**, cảnh báo sức khỏe, và tuân thủ quy định quảng cáo thuốc lá tại VN. Sẽ bổ sung popup xác nhận tuổi ở GĐ 5.
+Xì gà/thuốc lá là mặt hàng hạn chế: cần **cổng xác nhận đủ 18 tuổi**, cảnh báo sức khỏe, và tuân thủ quy định quảng cáo thuốc lá tại VN.
+
+Modal 18+ **đã dựng sẵn** (`.agegate`) nhưng đang tắt tạm bằng `style="display:none"` trên `#agegate` — **bật lại trước khi lên production**. Footer đã có dòng cảnh báo "Hút thuốc lá có hại cho sức khỏe".

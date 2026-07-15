@@ -148,6 +148,20 @@ Nền trắng, viền trên/dưới gold nhạt, 3 mục: icon tròn 52px (viề
 ### 4.11 Age gate — `.agegate`
 Modal xác nhận 18+, `z-index:100`. **Hiện đang tắt** bằng `style="display:none"` trên `#agegate` — bỏ thuộc tính này để bật lại.
 
+### 4.12 Favicon & icon ứng dụng
+Dùng **biểu tượng lá** của logo Vinataba (bỏ chữ "vinataba" vì ở 16–32px sẽ không đọc được), nền trong suốt, đệm 14% quanh biểu tượng.
+
+| File | Cỡ | Dùng cho |
+|---|---|---|
+| `favicon.ico` (thư mục gốc) | 16/32/48 đa lớp | Tab trình duyệt, bookmark |
+| `assets/img/favicon-16.png` · `-32.png` · `-48.png` | 16 · 32 · 48 | Trình duyệt hiện đại |
+| `assets/img/apple-touch-icon.png` | 180 | iOS "Thêm vào màn hình chính" |
+| `assets/img/favicon-512.png` | 512 | PWA / dự phòng |
+
+`<meta name="theme-color" content="#1A120B">` → thanh trình duyệt mobile mang màu nâu gỗ.
+
+**Quy trình tạo lại** (khi đổi logo): tách biểu tượng khỏi logo bằng dải trống giữa mark và chữ → canvas vuông + đệm → xuất các cỡ bằng `Image.LANCZOS` → gộp `favicon.ico` với `sizes=[(16,16),(32,32),(48,48)]`.
+
 ---
 
 ## 5. Breakpoints
@@ -174,6 +188,7 @@ Modal xác nhận 18+, `z-index:100`. **Hiện đang tắt** bằng `style="disp
 | Banner sập chiều cao, chừa khoảng trắng | Slide `position:absolute` không tạo chiều cao | Đặt `aspect-ratio` cho `.slider` |
 | Ảnh danh mục tràn đè chữ | `max-height:100%` không constrain trong grid | Đặt `height` cố định cho `img` |
 | Nút search bị che | Flex item mặc định `min-width:auto` | `input{min-width:0}` + `button{flex:0 0 46px}` |
+| Logo/ảnh còn viền khung mờ sau khi tách nền | Lọc theo độ sáng (`min(r,g,b)>205`) bỏ sót viền **xám đậm** `[172,172,172]` | Lọc theo **độ xám**: xóa pixel có `max(r,g,b) − min(r,g,b) < 25` (giữ gold vì r−b ≈ 90) |
 
 ---
 
@@ -182,17 +197,26 @@ Modal xác nhận 18+, `z-index:100`. **Hiện đang tắt** bằng `style="disp
 ```
 Cigar/
 ├─ index.html              ← trang chủ
+├─ favicon.ico             ← favicon đa cỡ (16/32/48)
 ├─ PLAN.md                 ← kế hoạch dự án
 ├─ DESIGN-SYSTEM.md        ← tài liệu này
 ├─ assets/
 │  ├─ css/styles.css       ← toàn bộ style + token (:root)
 │  ├─ js/main.js           ← dữ liệu SP, render, slider, cart, menu, search, goTop
-│  ├─ img/                 ← logo (đã tách nền), banner, icon, cat1–6.png
+│  ├─ img/                 ← logo (đã tách nền), banner, icon, cat1–6.png, favicon-*.png
 │  └─ home_col/            ← ảnh danh mục gốc (.webp)
 └─ Logo/                   ← file nguồn (logo, banner gốc)
 ```
 
-**Thứ tự nạp trong `<head>`:** Google Fonts (Montserrat + Dancing Script) → Font Awesome CDN → `assets/css/styles.css`. JS đặt cuối `<body>`.
+**Ảnh thương hiệu đã xử lý** (đều nền trong suốt, xóa cả nền trắng lẫn viền khung xám):
+
+| File | Cỡ | Dùng ở |
+|---|---|---|
+| `assets/img/logo-vinataba.png` | 1172×1179 | Header (cao 64px, `.stuck` 46px) · Footer (88px) |
+| `assets/img/cat1–6.png` | ~230–466 px ngang | Dải 6 danh mục (chuẩn hóa cao 108px) |
+| `assets/img/favicon-*` · `favicon.ico` | 16–512 | Tab trình duyệt, iOS |
+
+**Thứ tự nạp trong `<head>`:** favicon + `theme-color` → Google Fonts (Montserrat + Dancing Script) → Font Awesome 6.5.2 CDN → `assets/css/styles.css`. JS đặt cuối `<body>`.
 
 ---
 
